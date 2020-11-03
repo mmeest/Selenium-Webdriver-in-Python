@@ -10,7 +10,7 @@ or for python3
 ```
 pip3 install selenium
 ```
-
+<br/>
 ## Webdrivers
 * Chrome driver: https://chromedriver.chromium.org/downloads
 
@@ -18,7 +18,7 @@ pip3 install selenium
 2. Extract chromedriver.exe for example to C:/webdrivers
 3. Add chromedriver system PATH:
   **Win > Computer > Properties > Advanced system settings > Environment Variables > System variables > Path**
-  
+<br/>
 ## Example Python script to read Google URL and page title
 ```
 from selenium import webdriver
@@ -31,15 +31,19 @@ print(driver.current_url)
 
 driver.quit()
 ```
+<br/>
+**Printout:**
+ * Google
+ * https://www.google.com/
 
-  
+<br/>
 ### To use webdriver manager
 
 In Command Prompt
 ```
 pip install webdriver-manager
 ```
-
+<br/>
 In Python script
 ```
     from selenium import webdriver
