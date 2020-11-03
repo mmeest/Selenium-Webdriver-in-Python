@@ -10,7 +10,7 @@ or for python3
 ```
 pip3 install selenium
 ```
-<br/>
+&nbsp;
 ## Webdrivers
 * Chrome driver: https://chromedriver.chromium.org/downloads
 
