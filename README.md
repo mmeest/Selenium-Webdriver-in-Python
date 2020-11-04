@@ -15,7 +15,14 @@ pip3 install selenium
 ```
 &nbsp;
 ## Webdrivers
+<img src="chrome.jpg" widht="50px">
 * Chrome driver: https://chromedriver.chromium.org/downloads
+<img src="edge.jpg" widht="50px">
+* Edge driver: https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
+<img src="fox.jpg" widht="50px">
+* Firefox driver: https://github.com/mozilla/geckodriver/releases
+<img src="safari.jpg" widht="50px">
+* Safari driver: https://webkit.org/blog/6900/webdriver-support-in-safari-10/
 
 1. Download matching version of your Chrome browser.
 2. Extract chromedriver.exe for example to C:/webdrivers
@@ -118,6 +125,117 @@ XPath Axes and their Shortcuts:\
 https://our.umbraco.com/documentation/reference/templating/macros/xslt/xpath-axes-and-their-shortcuts
 &nbsp;
 <img src="https://our.umbraco.com/documentation/reference/templating/macros/xslt/Images/7x1B0.gif" alt="XPATH">
+
+&nbsp;
+## Dropdowns
+To use dropdown with id and values
+
+```
+from selenium import webdriver
+
+class Dropdown:
+    def __init__(self, driver, dropdown_id):
+        self.driver = driver
+        self.dropdown_id = dropdown_id
+        self.dropdown = driver.find_element_by_id(dropdown_id)
+
+    def select(self, value):
+        self.dropdown.click()
+        self.driver.find_element_by_xpath("//select[@id = '{}']/option[text() = '{}']".format(self.dropdown_id, value))
+        return self
+
+    def get_selected(self):
+        return str(self.driver.find_element_by_xpath("//select[@id = '{}']/option[@selected]").text)
+
+    def is_selected(self, value):
+        return value == self.get_selected()
+
+    def get_avaliable_selections(self):
+        data = []
+        xpath = "//select[@id = '{}'/option".format(self.dropdown_id)
+        count = len(self.driver.find_elements_by_xpath(xpath))
+        for index in range(1, count + 1):
+            data.append(self.driver.find_element_by_xpath("{}[{}]".format(xpath, index)).text)
+        return data
+
+if "__main__" == __name__:
+
+    driver = webdriver.Chrome()
+    driver.get("https://www.travelocity.com/#")
+
+    rooms = Dropdown(driver, "package-rooms-hp-package")
+    adults = Dropdown(driver, "package-l-adults-hp-pacage")
+    children = Dropdown(driver, "package-l-children-hp-package")
+    preferred_class = Dropdown(driver, "package-advanced-preferred-class-hp-package")
+
+    dropdowns = [rooms, adults, children, preferred_class]
+    for dropdown in dropdowns:
+        print dropdown.get_selected()
+        print dropdown.is_selected(1)
+        print dopdown.get_avaliable_selections[]
+        dropdown.select("2")
+```
+
+&nbsp;
+## Radio Buttons
+* Example code:
+```
+from selenium import webdriver
+
+class RadioButton:
+
+    def __init__(self, driver, text):
+
+        self.driver = driver
+        self.text = text
+        self.button = self.driver.find_element_by_xpath("//button[contains(@class, 'btn btnLrg btnSecondary') "
+                                                        "and text() = '{}']".format(text))
+
+    def is_selected(self):
+
+        return "btnSelected" in self.button.get_attribute("class")
+
+    def select(self):
+
+        self.button.click()
+        return self
+
+class RadioButtonGroup:
+
+    def __init__(self, radio_buttons):
+
+        self.radio_buttons = radio_buttons
+
+    def get_selected(self):
+
+        for radio_button in self.radio_buttons:
+            if radio_button.is_selected():
+                return radio_button.text 
+
+if "__main__" == __name__:
+
+    driver = webdriver.Chrome()
+    driver.get("https://www.travelocity.com/#")
+
+    buy = RadioButton(driver, "Buy")
+    rent = RadioButton(driver, "Rent")
+    sold = RadioButton(driver, "Sold")
+
+    group = RadioButtonGroup([buy, rent, sold])
+    print(group.get_selected())
+
+    buy.select()
+    print(group.get_selected())
+
+    rent.select()
+    print(group.get_selected())
+    
+```
+**Printout:**\
+* Buy\
+* Buy\
+* Rent\
+* Sold
 
 &nbsp;
 ### To use webdriver manager
