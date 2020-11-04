@@ -15,16 +15,17 @@ pip3 install selenium
 ```
 &nbsp;
 ## Webdrivers
-<img src="chrome.jpg" widht="50px">\
+&nbsp;\
+<img src="chrome.jpg" widht="30px">\
 * **Chrome driver** https://chromedriver.chromium.org/downloads
 &nbsp;\
-<img src="edge.jpg" widht="50px">\
+<img src="edge.jpg" widht="30px">\
 * **Edge driver:** https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
 &nbsp;\
-<img src="fox.jpg" widht="50px">\
+<img src="fox.jpg" widht="30px">\
 * **Firefox driver:** https://github.com/mozilla/geckodriver/releases
 &nbsp;\
-<img src="safari.jpg" widht="50px">\
+<img src="safari.jpg" widht="30px">\
 * **Safari driver:** https://webkit.org/blog/6900/webdriver-support-in-safari-10/
 
 1. Download matching version of your Chrome browser.
