@@ -3,7 +3,7 @@
 <img src="https://selenium-python.readthedocs.io/_static/logo.png" width="100px">
 https://selenium-python.readthedocs.io/index.html
 
-# Selenium-Webdriver-in-Python
+# Selenium-Webdriver-in-Python-and-Chrome-webdriver
 
 ## Install Selenium in Pyhton
 ```
